@@ -4064,6 +4064,36 @@
       <entry value="209" name="MAV_TUNNEL_PAYLOAD_TYPE_STORM32_RESERVED9">
         <description>Registered for STorM32 gimbal controller.</description>
       </entry>
+      <entry value="210" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_REMOTE_OSD">
+        <description>Registered for ModalAI remote OSD protocol.</description>
+      </entry>
+      <entry value="211" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_ESC_UART_PASSTHRU">
+        <description>Registered for ModalAI ESC UART passthru protocol.</description>
+      </entry>
+      <entry value="212" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED0">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
+      <entry value="213" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED1">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
+      <entry value="214" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED2">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
+      <entry value="215" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED3">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
+      <entry value="216" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED4">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
+      <entry value="217" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED5">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
+      <entry value="218" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED6">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
+      <entry value="219" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED7">
+        <description>Registered for ModalAI vendor use.</description>
+      </entry>
     </enum>
     <enum name="MAV_ODID_ID_TYPE">
       <entry value="0" name="MAV_ODID_ID_TYPE_NONE">
