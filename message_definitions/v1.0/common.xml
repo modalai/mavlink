@@ -4070,28 +4070,28 @@
       <entry value="211" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_ESC_UART_PASSTHRU">
         <description>Registered for ModalAI ESC UART passthru protocol.</description>
       </entry>
-      <entry value="212" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED0">
+      <entry value="212" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_IO_UART_PASSTHRU">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
-      <entry value="213" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED1">
+      <entry value="213" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED0">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
-      <entry value="214" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED2">
+      <entry value="214" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED1">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
-      <entry value="215" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED3">
+      <entry value="215" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED2">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
-      <entry value="216" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED4">
+      <entry value="216" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED3">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
-      <entry value="217" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED5">
+      <entry value="217" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED4">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
-      <entry value="218" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED6">
+      <entry value="218" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED5">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
-      <entry value="219" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED7">
+      <entry value="219" name="MAV_TUNNEL_PAYLOAD_TYPE_MODALAI_RESERVED6">
         <description>Registered for ModalAI vendor use.</description>
       </entry>
     </enum>
