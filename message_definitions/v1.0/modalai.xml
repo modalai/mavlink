@@ -29,27 +29,8 @@
         <description>Set active VTX transmit power table index.</description>
         <param index="1" label="Power Index" minValue="0" maxValue="63" increment="1">Power table index to apply.</param>
       </entry>
-      <entry value="31136" name="MAV_CMD_VTX_SET_CUSTOM_CONF" hasLocation="false" isDestination="false">
-        <description>Set stateful VTX custom configuration flags.</description>
-        <param index="1" label="Conf Flags" increment="1">Bitmask from VTX_CUSTOM_CONF_FLAGS controlling telemetry/debug/remote features.</param>
-      </entry>
     </enum>
 
-    <enum name="VTX_CUSTOM_CONF_FLAGS" bitmask="true">
-      <description>Bitmask for stateful VTX custom configuration flags.</description>
-      <entry value="1" name="VTX_CUSTOM_CONF_FLAG_MAVLINK_TELEMETRY_ENABLED">
-        <description>Forward MAVLink telemetry to RF link.</description>
-      </entry>
-      <entry value="2" name="VTX_CUSTOM_CONF_FLAG_DEBUG_LOG_ENABLED">
-        <description>Enable debug logging on VTX.</description>
-      </entry>
-      <entry value="4" name="VTX_CUSTOM_CONF_FLAG_REMOTE_RECORD_ENABLED">
-        <description>Allow remote record control on VRX.</description>
-      </entry>
-      <entry value="8" name="VTX_CUSTOM_CONF_FLAG_REMOTE_STREAM_STATS_ENABLED">
-        <description>Allow remote stream stats display/control on VRX.</description>
-      </entry>
-    </enum>
 
     <enum name="MAV_ONBOARD_COMPUTER_STATUS_TYPE">
       <description>Type of onboard computer reported in ONBOARD_COMPUTER_STATUS.type.</description>
@@ -87,12 +68,13 @@
   </enums>
 
   <messages>
-    <message id="42000" name="VTX_STATUS">
+    <message id="52610" name="VTX_STATUS">
       <description>Current VTX operating status and custom configuration flags.</description>
       <field type="uint8_t" name="profile">Active VTX profile index.</field>
       <field type="uint16_t" name="channel">Active VTX channel index.</field>
       <field type="uint8_t" name="power">Active VTX power table index.</field>
-      <field type="uint32_t" name="conf_flags" enum="VTX_CUSTOM_CONF_FLAGS">Current VTX custom configuration bitmask.</field>
+      <field type="uint8_t" name="modem_conf">Bitfield indicating modem configuration. 0x01: VTX, 0x02: VRX, others reserved.</field>
+      <field type="uint32_t" name="custom_status">Extra status fields, hardware specific.</field>
     </message>
   </messages>
 </mavlink>
