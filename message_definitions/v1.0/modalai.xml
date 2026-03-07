@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<mavlink>
+  <include>common.xml</include>
+  <version>3</version>
+  <dialect>200</dialect>
+  <enums>
+    <enum name="MAV_CMD">
+      <entry value="610" name="MAV_CMD_DO_SET_SYS_CMP_ID" hasLocation="false" isDestination="false">
+        <description>
+          Set system and component id.
+          This allows moving of a system and all its components to a new system id, or moving a particular component to a new system/component id.
+          Recipients must reject command addressed to broadcast system ID.
+        </description>
+        <param index="1" label="System ID" minValue="1" maxValue="255" increment="1">New system ID for target component(s). 0: ignore and reject command (broadcast system ID not allowed).</param>
+        <param index="2" label="Component ID" minValue="0" maxValue="255" increment="1">New component ID for target component(s). 0: ignore (component IDs don't change).</param>
+        <param index="3" label="Reboot">Reboot components after ID change. Any non-zero value triggers the reboot.</param>
+        <param index="4" reserved="true" default="NaN"/>
+      </entry>
+
+      <entry value="31133" name="MAV_CMD_VTX_SET_PROFILE" hasLocation="false" isDestination="false">
+        <description>Set active VTX profile index.</description>
+        <param index="1" label="Profile Index" minValue="0" increment="1">Profile index to apply.</param>
+      </entry>
+      <entry value="31134" name="MAV_CMD_VTX_SET_CHANNEL" hasLocation="false" isDestination="false">
+        <description>Set active VTX channel index.</description>
+        <param index="1" label="Channel Index" minValue="1" increment="1">Channel index to apply.</param>
+      </entry>
+      <entry value="31135" name="MAV_CMD_VTX_SET_POWER" hasLocation="false" isDestination="false">
+        <description>Set active VTX transmit power table index.</description>
+        <param index="1" label="Power Index" minValue="0" maxValue="63" increment="1">Power table index to apply.</param>
+      </entry>
+      <entry value="31136" name="MAV_CMD_VTX_SET_CUSTOM_CONF" hasLocation="false" isDestination="false">
+        <description>Set stateful VTX custom configuration flags.</description>
+        <param index="1" label="Conf Flags" increment="1">Bitmask from VTX_CUSTOM_CONF_FLAGS controlling telemetry/debug/remote features.</param>
+      </entry>
+    </enum>
+
+    <enum name="VTX_CUSTOM_CONF_FLAGS" bitmask="true">
+      <description>Bitmask for stateful VTX custom configuration flags.</description>
+      <entry value="1" name="VTX_CUSTOM_CONF_FLAG_MAVLINK_TELEMETRY_ENABLED">
+        <description>Forward MAVLink telemetry to RF link.</description>
+      </entry>
+      <entry value="2" name="VTX_CUSTOM_CONF_FLAG_DEBUG_LOG_ENABLED">
+        <description>Enable debug logging on VTX.</description>
+      </entry>
+      <entry value="4" name="VTX_CUSTOM_CONF_FLAG_REMOTE_RECORD_ENABLED">
+        <description>Allow remote record control on VRX.</description>
+      </entry>
+      <entry value="8" name="VTX_CUSTOM_CONF_FLAG_REMOTE_STREAM_STATS_ENABLED">
+        <description>Allow remote stream stats display/control on VRX.</description>
+      </entry>
+    </enum>
+
+    <enum name="MAV_ONBOARD_COMPUTER_STATUS_TYPE">
+      <description>Type of onboard computer reported in ONBOARD_COMPUTER_STATUS.type.</description>
+      <entry value="0" name="MAV_ONBOARD_COMPUTER_STATUS_PRIMARY">
+        <description>Primary mission computer.</description>
+      </entry>
+      <entry value="1" name="MAV_ONBOARD_COMPUTER_STATUS_BACKUP_1">
+        <description>Mission computer backup 1.</description>
+      </entry>
+      <entry value="2" name="MAV_ONBOARD_COMPUTER_STATUS_BACKUP_2">
+        <description>Mission computer backup 2.</description>
+      </entry>
+      <entry value="3" name="MAV_ONBOARD_COMPUTER_STATUS_COMPUTE_NODE">
+        <description>General compute node.</description>
+      </entry>
+      <entry value="4" name="MAV_ONBOARD_COMPUTER_STATUS_COMPUTE_SPARE_1">
+        <description>Compute spare 1.</description>
+      </entry>
+      <entry value="5" name="MAV_ONBOARD_COMPUTER_STATUS_COMPUTE_SPARE_2">
+        <description>Compute spare 2.</description>
+      </entry>
+      <entry value="6" name="MAV_ONBOARD_COMPUTER_STATUS_PAYLOAD_1">
+        <description>Payload computer 1.</description>
+      </entry>
+      <entry value="7" name="MAV_ONBOARD_COMPUTER_STATUS_PAYLOAD_2">
+        <description>Payload computer 2.</description>
+      </entry>
+      <entry value="8" name="MAV_ONBOARD_COMPUTER_STATUS_PAYLOAD_3">
+        <description>Payload computer 3.</description>
+      </entry>
+      <entry value="9" name="MAV_ONBOARD_COMPUTER_STATUS_PAYLOAD_4">
+        <description>Payload computer 4.</description>
+      </entry>
+    </enum>
+  </enums>
+
+  <messages>
+    <message id="42000" name="VTX_STATUS">
+      <description>Current VTX operating status and custom configuration flags.</description>
+      <field type="uint8_t" name="profile">Active VTX profile index.</field>
+      <field type="uint16_t" name="channel">Active VTX channel index.</field>
+      <field type="uint8_t" name="power">Active VTX power table index.</field>
+      <field type="uint32_t" name="conf_flags" enum="VTX_CUSTOM_CONF_FLAGS">Current VTX custom configuration bitmask.</field>
+    </message>
+  </messages>
+</mavlink>
