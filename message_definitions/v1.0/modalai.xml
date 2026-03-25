@@ -76,5 +76,19 @@
       <field type="uint8_t" name="modem_conf">Bitfield indicating modem configuration. 0x01: VTX, 0x02: VRX, others reserved.</field>
       <field type="uint32_t" name="custom_status">Extra status fields, hardware specific.</field>
     </message>
+
+    <message id="16777210" name="PERF_BENCHMARK">
+      <description>Deterministic benchmark payload used to measure internal bus throughput and delivery loss.</description>
+      <field type="uint64_t" name="tx_time_ns">Monotonic transmit timestamp captured by the publisher thread.</field>
+      <field type="uint32_t" name="run_id">Benchmark run identifier shared by all publishers in one benchmark invocation.</field>
+      <field type="uint32_t" name="stage_id">Benchmark stage identifier. 1: warmup, 2: measured sample.</field>
+      <field type="uint32_t" name="seq">Per-sender, per-stream sequence number for loss accounting.</field>
+      <field type="uint16_t" name="payload_len">Number of valid bytes in payload.</field>
+      <field type="uint8_t" name="target_system">Target system id. 0 broadcasts to all systems.</field>
+      <field type="uint8_t" name="target_component">Target component id. 0 broadcasts to all components in target_system.</field>
+      <field type="uint8_t" name="stream_id">Logical stream identifier within a sender.</field>
+      <field type="uint8_t" name="flags">Benchmark flags, reserved for future use.</field>
+      <field type="uint8_t[180]" name="payload">Opaque payload bytes used to exercise different MAVLink frame sizes.</field>
+    </message>
   </messages>
 </mavlink>
