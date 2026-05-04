@@ -29,6 +29,23 @@
         <description>Set active VTX transmit power table index.</description>
         <param index="1" label="Power Index" minValue="0" maxValue="63" increment="1">Power table index to apply.</param>
       </entry>
+
+      <entry value="31136" name="MAV_CMD_MODALAI_PAYLOAD_CTRL" hasLocation="false" isDestination="false">
+        <description>
+          Arm/disarm and trigger/safe a payload component.
+          Each param is independent; set to 0 to leave that axis unchanged.
+        </description>
+        <param index="1" label="Arm" minValue="0" maxValue="2" increment="1">Arm state. 0: no-change, 1: arm, 2: disarm.</param>
+        <param index="2" label="Trigger" minValue="0" maxValue="2" increment="1">Trigger state. 0: no-change, 1: fire, 2: safe.</param>
+      </entry>
+
+      <entry value="31137" name="MAV_CMD_MODALAI_LED_CTRL" hasLocation="false" isDestination="false">
+        <description>
+          Set the active state of a Patrios light bar managed by voxl-io-server.
+          Applies to all enabled patrios_light_bar behaviors.
+        </description>
+        <param index="1" label="State" minValue="0" maxValue="6" increment="1">Light state. 0: off, 1: white_low, 2: white_high, 3: white_strobe, 4: ir_low, 5: ir_high, 6: ir_strobe.</param>
+      </entry>
     </enum>
 
 
