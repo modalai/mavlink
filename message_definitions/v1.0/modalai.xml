@@ -93,5 +93,31 @@
       <field type="uint8_t" name="modem_conf">Bitfield indicating modem configuration. 0x01: VTX, 0x02: VRX, others reserved.</field>
       <field type="uint32_t" name="custom_status">Extra status fields, hardware specific.</field>
     </message>
+    <message id="52611" name="C2_MESH_STATUS">
+      <wip/>
+      <!--This is a work in progress message+microservice, for Babel-like mesh routing over standard MAVLink links.
+          The updates field contains an array of update records with two indepent metrics, one for latency and one for link quality.
+          Any implementers are allowed to use any definition of each of these metrics, and derive their own combinations for each traffic class as they choose, as long as they keep the standard Babel invariants satisfied (monotonicity and left-distributivity).
+          Note that a cost of 255 == inf, so the cost metrics should use small values if multiple hops are desired.
+          These messages are meant to be mostly stateless, interval based updates which fits well within the MAVLink model, but it does support on-demand SEQNO requests to support rapid reconfiguration on link loss / unfeasible conditions.
+          A standard enum will need to be defined with the definitions for the different link types (and maybe somewhat standard cost metrics?).
+
+          Fields may be packed more tightly in the future, possibly reducing the number of bits in epoch, rx_mask, and the seqnos, pending performance characterization.
+          Message will also probably be renamed to MAV_MESH_STATUS, and more MAV_MESH_* messages may be added in the future. (e.g. SEQNO REQ messages may turn into a seperate message, seperate IHUs may be added, etc.)
+
+          Protocol inspired by: rfc8966
+      -->
+      <description>Link-local C2 mesh routing status.</description>
+      <field type="uint16_t" name="router_epoch">Router session identifier.</field>
+      <field type="uint16_t" name="hello_seq">Monotonic per-link status sequence number.</field>
+      <field type="uint16_t" name="peer_seq">Last peer hello sequence observed on this link.</field>
+      <field type="uint16_t" name="peer_rx_mask">Bitmask of recently observed peer hello sequences.</field>
+      <field type="uint8_t" name="mesh_flags">Protocol version and status flags.</field>
+      <field type="uint8_t" name="link_profile">Low nibble: local class mask. High nibble: link type.</field>
+      <field type="uint8_t" name="update_count">Number of valid 6-byte records in updates.</field>
+      <field type="uint8_t" name="fragment">High nibble: fragment index. Low nibble: fragment count minus one.</field>
+      <extensions/>
+      <field type="uint8_t[240]" name="updates">Packed 6-byte route records.</field>
+    </message>
   </messages>
 </mavlink>
