@@ -96,14 +96,21 @@
     <message id="52611" name="C2_MESH_STATUS">
       <wip/>
       <!--This is a work in progress message+microservice, for Babel-like mesh routing over standard MAVLink links.
-          The updates field contains an array of update records with two indepent metrics, one for latency and one for link quality.
-          Any implementers are allowed to use any definition of each of these metrics, and derive their own combinations for each traffic class as they choose, as long as they keep the standard Babel invariants satisfied (monotonicity and left-distributivity).
+          The `updates` field contains an array of update records with two independent metrics, one for latency and one for link quality.
+          Implementers are allowed to use any definition of each of these metrics, and derive their own combinations for each traffic class as they choose, as long as they keep the standard Babel invariants satisfied (monotonicity and left-distributivity).
           Note that a cost of 255 == inf, so the cost metrics should use small values if multiple hops are desired.
           These messages are meant to be mostly stateless, interval based updates which fits well within the MAVLink model, but it does support on-demand SEQNO requests to support rapid reconfiguration on link loss / unfeasible conditions.
           A standard enum will need to be defined with the definitions for the different link types (and maybe somewhat standard cost metrics?).
 
           Fields may be packed more tightly in the future, possibly reducing the number of bits in epoch, rx_mask, and the seqnos, pending performance characterization.
           Message will also probably be renamed to MAV_MESH_STATUS, and more MAV_MESH_* messages may be added in the future. (e.g. SEQNO REQ messages may turn into a seperate message, seperate IHUs may be added, etc.)
+
+          This is also currently designed with point-to-point links in mind, multicast wireless links will require some small adjustments to this routing model.
+
+          Update record type defined in: ...
+
+          The main issue with "link-local" MAVLink messages is that they will normally be forwarded if the link doesn't understand them. It may be worth adding a target system field to it, but that has the disadvantage of needing to know the target system.
+          (target system = 0 has the same issue).
 
           Protocol inspired by: rfc8966
       -->
@@ -119,5 +126,7 @@
       <extensions/>
       <field type="uint8_t[240]" name="updates">Packed 6-byte route records.</field>
     </message>
+    <!--Also proposing another message which can be injected by custom links to indicate that a link-failure event has occurred, e.g. VTX, ELRS links.
+        That message could also be used to send another metric indicating a real link-quality/snr/rssi/etx, for real RF links like VTX, ELRS.-->
   </messages>
 </mavlink>
