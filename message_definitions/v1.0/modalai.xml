@@ -122,7 +122,7 @@
       <field type="uint8_t" name="mesh_flags">Protocol version and status flags.</field>
       <field type="uint8_t" name="link_profile">Low nibble: local class mask. High nibble: link type.</field>
       <field type="uint8_t" name="update_count">Number of valid 6-byte records in updates.</field>
-      <field type="uint8_t" name="fragment">High nibble: fragment index. Low nibble: fragment count minus one.</field>
+      <field type="uint8_t" name="status_interval_100ms">Encoded local status interval in 100 ms units. `0` is reserved for legacy peers that imply the historical 1000 ms default.</field>
       <extensions/>
       <field type="uint8_t[240]" name="updates">Packed 6-byte route records.</field>
     </message>
